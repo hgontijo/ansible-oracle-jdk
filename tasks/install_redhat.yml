@@ -1,0 +1,11 @@
+---
+- name: download oracle-jdk rpm
+  get_url:
+    url: "{{ oracle_jdk_rpm_download_source_url }}"
+    headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+    dest: /tmp/{{ java_download_filename }}
+
+- name: install oracle-jdk
+  yum:
+    name: /tmp/{{ oracle_jdk_rpm_download_filename }}
+    state: present
