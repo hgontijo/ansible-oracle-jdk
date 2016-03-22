@@ -9,3 +9,9 @@
   yum:
     name: /tmp/{{ oracle_jdk_rpm_download_filename }}
     state: present
+
+- name: configure installed java
+  alternatives:
+    name: java
+    path: /usr/java/jdk1.{{ oracle_jdk_version }}.0_{{ oracle_jdk_update }}/bin/java
+    link: /usr/bin/java
